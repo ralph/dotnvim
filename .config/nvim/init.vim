@@ -331,3 +331,6 @@ if has('nvim')
   tnoremap <Esc> <C-\><C-n>
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
+
+
+let g:jsx_ext_required = 0
