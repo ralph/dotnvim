@@ -114,6 +114,7 @@ set scrolloff=3                   " Show 3 lines of context around the cursor.
 "" NERDTree
 let NERDTreeHijackNetrw=1
 map <c-n> :NERDTreeFind<cr>
+" let NERDTreeShowHidden=1
 
 "" Pane switching shortcuts
 nnoremap <C-h> <C-w>h
