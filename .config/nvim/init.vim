@@ -21,7 +21,6 @@ else
  Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 endif
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
 Plug 'ap/vim-css-color'
 Plug 'benekastah/neomake'
 Plug 'cespare/vim-toml'
@@ -34,6 +33,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'groenewege/vim-less'
 Plug 'kana/vim-textobj-user'
 Plug 'lambdatoast/elm.vim'
+Plug 'lifepillar/vim-solarized8'
 Plug 'majutsushi/tagbar'
 Plug 'mtth/scratch.vim'
 Plug 'mustache/vim-mustache-handlebars'
@@ -98,13 +98,12 @@ set ignorecase                  " searches are case insensitive...
 set smartcase                   " ... unless they contain at least one capital letter
 
 "" Color scheme
-let &t_Co=256
-let g:solarized_termcolors = &t_Co
-let g:solarized_termtrans = 1
+set termguicolors
+set background=light " or dark
+" let g:solarized_termtrans = 1
 let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-set background=light
-silent! colorscheme solarized
+let g:solarized_term_italics = 1
+silent! colorscheme solarized8_light_high
 
 "" Line numbering, cursor
 set relativenumber                " Show relative line numbers.
