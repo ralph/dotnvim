@@ -30,7 +30,10 @@ Plug 'dyng/ctrlsf.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'elzr/vim-json'
 Plug 'flazz/vim-colorschemes'
+Plug 'godlygeek/tabular'
 Plug 'groenewege/vim-less'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'lambdatoast/elm.vim'
 Plug 'lifepillar/vim-solarized8'
@@ -40,6 +43,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'mxw/vim-jsx'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'pangloss/vim-javascript'
+Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/nerdtree' | Plug 'EvanDotPro/nerdtree-chmod' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'stephpy/vim-yaml'
 " Plug 'ternjs/tern_for_vim'
@@ -333,3 +337,25 @@ endif
 
 
 let g:jsx_ext_required = 0
+
+
+function! s:goyo_enter()
+  " silent !tmux set status off
+  " silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  " silent !tmux set status on
+  " silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
+  set showmode
+  set showcmd
+  set scrolloff=5
+  Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
