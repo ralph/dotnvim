@@ -28,12 +28,12 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'elixir-lang/vim-elixir'
+Plug 'elmcast/elm-vim'
 Plug 'elzr/vim-json'
 Plug 'groenewege/vim-less'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'kana/vim-textobj-user'
-Plug 'lambdatoast/elm.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'majutsushi/tagbar'
 Plug 'mtth/scratch.vim'
@@ -264,6 +264,7 @@ else
   " neocomplete
   " Disable AutoComplPop.
   let g:acp_enableAtStartup = 0
+
   " Use neocomplete.
   let g:neocomplete#enable_at_startup = 1
   let g:neocomplete#enable_smart_case = 1
@@ -273,11 +274,17 @@ else
   let g:neocomplete#max_list = 10
   let g:neocomplete#force_overwrite_completefunc = 1
   let g:neocomplete#sources#syntax#min_keyword_length = 3
+
   " Enable omni completion.
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+
+  call neocomplete#util#set_default_dictionary(
+    \ 'g:neocomplete#sources#omni#input_patterns',
+    \ 'elm',
+    \ '\.')
 end
 
 
@@ -356,3 +363,5 @@ endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+let g:elm_format_autosave = 1
