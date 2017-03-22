@@ -22,9 +22,10 @@ else
 endif
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
-Plug 'benekastah/neomake'
+Plug 'c-brenn/phoenix.vim'
 Plug 'cespare/vim-toml'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'neomake/neomake'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'elixir-lang/vim-elixir'
@@ -35,6 +36,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'lifepillar/vim-solarized8'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'mtth/scratch.vim'
 Plug 'mustache/vim-mustache-handlebars'
@@ -43,6 +45,7 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown' | Plug 'godlygeek/tabular'
 Plug 'scrooloose/nerdtree' | Plug 'EvanDotPro/nerdtree-chmod' | Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'slashmili/alchemist.vim'
 Plug 'stephpy/vim-yaml'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tomtom/tcomment_vim'
@@ -182,6 +185,10 @@ map <c-b> :CtrlPBuffer<cr>
 map <leader>c :Copen<cr>
 
 
+" Alchemist
+let g:alchemist_tag_disable = 1
+
+
 " Terminal
 if has('nvim')
   let g:neoterm_shell = "zsh"
@@ -239,7 +246,12 @@ let ruby_fold=1
 " Neomake
 if has('nvim')
   autocmd! BufWritePost * Neomake
+  let g:neomake_elixir_enabled_makers = ['credo']
 end
+
+
+" CTags
+let g:gutentags_cache_dir = '~/.tags_cache'
 
 " Airline
 let g:airline#extensions#branch#enabled=1
