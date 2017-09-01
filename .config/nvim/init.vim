@@ -5,7 +5,7 @@ else
 end
 
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'kassio/neoterm'
 else
   Plug 'Shougo/neocomplete.vim'
@@ -15,18 +15,19 @@ else
 end
 
 Plug 'Shougo/unite.vim'
-if system('uname') =~ 'Darwin'
-  Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_mac.mak' }
-else
- Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-endif
+" if system('uname') =~ 'Darwin'
+"   Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_mac.mak' }
+" else
+"  Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+" endif
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'c-brenn/phoenix.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'neomake/neomake'
+Plug 'neomake/neomake' | Plug 'benjie/neomake-local-eslint.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dyng/ctrlsf.vim'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'kana/vim-textobj-user'
@@ -226,9 +227,6 @@ autocmd User fugitive
 autocmd Filetype gitcommit setlocal spell textwidth=72
 let g:fugitive_github_domains = ['source.xing.com']
 
-autocmd User Rails Rnavcommand fabricator spec/fabricators -suffix=_fabricator.rb -default=model()
-autocmd User Rails Rnavcommand serializer app/serializers -suffix=_serializer.rb -default=model()
-
 set foldmethod=syntax
 set foldlevelstart=10
 let ruby_fold=1
@@ -236,7 +234,22 @@ let ruby_fold=1
 " Neomake
 if has('nvim')
   autocmd! BufWritePost * Neomake
-  let g:neomake_elixir_enabled_makers = ['credo']
+  let g:neomake_javascript_enabled_makers = ['eslint']
+  " let g:neomake_elixir_enabled_makers = ['elixir', 'credo']
+  " let g:neomake_elixir_elixir_maker = {
+  "     \ 'exe': 'elixirc',
+  "     \ }
+  " let g:neomake_elixir_elixir_maker = {
+  "     \ 'exe': 'elixirc',
+  "     \ 'args': [
+  "       \ '--ignore-module-conflict', '--warnings-as-errors',
+  "       \ '--app', 'mix', '--app', 'ex_unit',
+  "       \ '-o', '$TMPDIR', '%:p'
+  "     \ ],
+  "     \ 'errorformat':
+  "         \ '%E** %s %f:%l: %m,' .
+  "         \ '%W%f:%l'
+  "     \ }
 end
 
 
@@ -263,6 +276,13 @@ cnoreabbrev <expr> Wa ((getcmdtype() is# ':' && getcmdline() is# 'Wa')?('wa'):('
 
 if has('nvim')
   let g:deoplete#enable_at_startup = 1
+  let g:deoplete#disable_auto_complete = 1
+  inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : deoplete#mappings#manual_complete()
+
+  function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+  endfunction"}}}
 else
   " neocomplete
   " Disable AutoComplPop.
