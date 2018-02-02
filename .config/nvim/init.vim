@@ -36,6 +36,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'mtth/scratch.vim'
 Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree' | Plug 'EvanDotPro/nerdtree-chmod' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'sheerun/vim-polyglot' | Plug 'godlygeek/tabular'
 Plug 'slashmili/alchemist.vim'
@@ -252,6 +253,9 @@ if has('nvim')
   "     \ }
 end
 
+
+" NeoFormat
+autocmd BufWritePre *.js Neoformat
 
 " CTags
 let g:gutentags_cache_dir = '~/.tags_cache'
