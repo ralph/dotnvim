@@ -5,6 +5,10 @@ else
 end
 
 if has('nvim')
+  Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'kassio/neoterm'
 else
@@ -252,6 +256,11 @@ if has('nvim')
   "         \ '%W%f:%l'
   "     \ }
 end
+
+
+" let g:LanguageClient_serverCommands = {
+"     \ 'reason': ['/Users/ralph/Documents/work/reason-language-server/reason-language-server.exe']
+"     \ }
 
 
 " NeoFormat
