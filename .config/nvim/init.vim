@@ -39,6 +39,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'mtth/scratch.vim'
+Plug 'mzlogin/vim-markdown-toc'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree' | Plug 'EvanDotPro/nerdtree-chmod' | Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -376,11 +377,13 @@ endif
 " if exists(':tnoremap')
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 endif
 
 
 let g:jsx_ext_required = 0
+
+let g:vmt_list_item_char = "-"
+let g:vmt_dont_insert_fence = 1
 
 
 function! s:goyo_enter()
