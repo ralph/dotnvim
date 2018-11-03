@@ -263,7 +263,12 @@ end
 
 
 " NeoFormat
-autocmd BufWritePre *.js Neoformat
+augroup fmt
+  autocmd!
+  autocmd BufWritePre *.js undojoin | Neoformat
+  autocmd BufWritePre *.ex undojoin | Neoformat
+  autocmd BufWritePre *.exs undojoin | Neoformat
+augroup END
 
 " CTags
 let g:gutentags_cache_dir = '~/.tags_cache'
