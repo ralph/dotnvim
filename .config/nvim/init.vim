@@ -102,9 +102,8 @@ set smartcase                   " ... unless they contain at least one capital l
 set termguicolors
 set background=light " or dark
 " let g:solarized_termtrans = 1
-let g:solarized_visibility = "high"
 let g:solarized_term_italics = 1
-silent! colorscheme solarized8_light_high
+silent! colorscheme solarized8_high
 
 "" Line numbering, cursor
 set relativenumber                " Show relative line numbers.
