@@ -5,10 +5,10 @@ else
 end
 
 if has('nvim')
-  Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+    " Plug 'autozimu/LanguageClient-neovim', {
+    " \ 'branch': 'next',
+    " \ 'do': 'bash install.sh',
+    " \ }
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'kassio/neoterm'
 else
@@ -18,7 +18,9 @@ else
   Plug 'tpope/vim-dispatch'
 end
 
-Plug 'Shougo/unite.vim'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': 'sh install.sh'}
+Plug 'Shougo/denite.nvim'
 " if system('uname') =~ 'Darwin'
 "   Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_mac.mak' }
 " else
@@ -42,6 +44,7 @@ Plug 'mmorearty/elixir-ctags'
 Plug 'mtth/scratch.vim'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'posva/vim-vue'
 Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree' | Plug 'EvanDotPro/nerdtree-chmod' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'sheerun/vim-polyglot' | Plug 'godlygeek/tabular'
@@ -241,6 +244,8 @@ let ruby_fold=1
 if has('nvim')
   autocmd! BufWritePost * Neomake
   let g:neomake_javascript_enabled_makers = ['eslint']
+  " let g:neomake_javascript_eslint_args = ['-f', 'compact', '--fix']
+  " au User NeomakeFinished checktime
   " let g:neomake_elixir_enabled_makers = ['elixir', 'credo']
   " let g:neomake_elixir_elixir_maker = {
   "     \ 'exe': 'elixirc',
@@ -295,7 +300,7 @@ cnoreabbrev <expr> Wa ((getcmdtype() is# ':' && getcmdline() is# 'Wa')?('wa'):('
 
 if has('nvim')
   let g:deoplete#enable_at_startup = 1
-  let g:deoplete#disable_auto_complete = 1
+  " let g:deoplete#disable_auto_complete = 1
   inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : deoplete#mappings#manual_complete()
 
   function! s:check_back_space() abort "{{{
