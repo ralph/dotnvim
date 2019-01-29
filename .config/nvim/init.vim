@@ -243,7 +243,8 @@ let ruby_fold=1
 " Neomake
 if has('nvim')
   autocmd! BufWritePost * Neomake
-  let g:neomake_javascript_enabled_makers = ['eslint']
+  " let g:neomake_javascript_enabled_makers = ['prettier-eslint']
+  " let g:neomake_vue_enabled_makers = ['prettier-eslint']
   " let g:neomake_javascript_eslint_args = ['-f', 'compact', '--fix']
   " au User NeomakeFinished checktime
   " let g:neomake_elixir_enabled_makers = ['elixir', 'credo']
@@ -270,9 +271,14 @@ end
 
 
 " NeoFormat
+let g:neoformat_enabled_vue = ['prettier-eslint']
+let g:neoformat_enabled_javascript = ['prettier-eslint']
+let g:neoformat_run_all_formatters = 1
 augroup fmt
   autocmd!
   autocmd BufWritePre *.js undojoin | Neoformat
+  autocmd BufWritePre *.ts undojoin | Neoformat
+  autocmd BufWritePre *.vue undojoin | Neoformat
   autocmd BufWritePre *.ex undojoin | Neoformat
   autocmd BufWritePre *.exs undojoin | Neoformat
 augroup END
@@ -322,16 +328,16 @@ else
   let g:neocomplete#force_overwrite_completefunc = 1
   let g:neocomplete#sources#syntax#min_keyword_length = 3
 
+  if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+  endif
+  let g:neocomplete#force_omni_input_patterns.typescript = '[^. *\t]\.\w*\|\h\w*::'
+
   " Enable omni completion.
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-
-  call neocomplete#util#set_default_dictionary(
-    \ 'g:neocomplete#sources#omni#input_patterns',
-    \ 'elm',
-    \ '\.')
 end
 
 
