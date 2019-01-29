@@ -30,7 +30,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'c-brenn/phoenix.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'neomake/neomake' | Plug 'benjie/neomake-local-eslint.vim'
+" Plug 'neomake/neomake' | Plug 'benjie/neomake-local-eslint.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -45,7 +45,7 @@ Plug 'mtth/scratch.vim'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'posva/vim-vue'
-Plug 'sbdchd/neoformat'
+" Plug 'sbdchd/neoformat'
 Plug 'scrooloose/nerdtree' | Plug 'EvanDotPro/nerdtree-chmod' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'sheerun/vim-polyglot' | Plug 'godlygeek/tabular'
 Plug 'slashmili/alchemist.vim'
@@ -65,6 +65,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'w0rp/ale'
 if system('uname') =~ 'Darwin'
   Plug 'zerowidth/vim-copy-as-rtf'
 endif
@@ -241,8 +242,8 @@ set foldlevelstart=10
 let ruby_fold=1
 
 " Neomake
-if has('nvim')
-  autocmd! BufWritePost * Neomake
+" if has('nvim')
+"   autocmd! BufWritePost * Neomake
   " let g:neomake_javascript_enabled_makers = ['prettier-eslint']
   " let g:neomake_vue_enabled_makers = ['prettier-eslint']
   " let g:neomake_javascript_eslint_args = ['-f', 'compact', '--fix']
@@ -262,7 +263,7 @@ if has('nvim')
   "         \ '%E** %s %f:%l: %m,' .
   "         \ '%W%f:%l'
   "     \ }
-end
+" end
 
 
 " let g:LanguageClient_serverCommands = {
@@ -271,17 +272,26 @@ end
 
 
 " NeoFormat
-let g:neoformat_enabled_vue = ['prettier-eslint']
-let g:neoformat_enabled_javascript = ['prettier-eslint']
-let g:neoformat_run_all_formatters = 1
-augroup fmt
-  autocmd!
-  autocmd BufWritePre *.js undojoin | Neoformat
-  autocmd BufWritePre *.ts undojoin | Neoformat
-  autocmd BufWritePre *.vue undojoin | Neoformat
-  autocmd BufWritePre *.ex undojoin | Neoformat
-  autocmd BufWritePre *.exs undojoin | Neoformat
-augroup END
+" let g:neoformat_enabled_vue = ['prettier-eslint']
+" let g:neoformat_enabled_javascript = ['prettier-eslint']
+" let g:neoformat_run_all_formatters = 1
+" augroup fmt
+"   autocmd!
+"   autocmd BufWritePre *.js undojoin | Neoformat
+"   autocmd BufWritePre *.ts undojoin | Neoformat
+"   autocmd BufWritePre *.vue undojoin | Neoformat
+"   autocmd BufWritePre *.ex undojoin | Neoformat
+"   autocmd BufWritePre *.exs undojoin | Neoformat
+" augroup END
+
+" ALE
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier_eslint'],
+\   'typescript': ['prettier_eslint'],
+\   'vue': ['prettier_eslint'],
+\}
+let g:ale_fix_on_save = 1
 
 " CTags
 let g:gutentags_cache_dir = '~/.tags_cache'
