@@ -288,8 +288,8 @@ let ruby_fold=1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['prettier_eslint'],
-\   'typescript': ['prettier_eslint'],
-\   'vue': ['prettier_eslint'],
+\   'typescript': ['prettier', 'eslint'],
+\   'vue': ['prettier', 'eslint'],
 \}
 let g:ale_fix_on_save = 1
 
@@ -432,3 +432,6 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 let g:elm_format_autosave = 1
 
 let g:fugitive_gitlab_domains = ['git.cardelmar.info']
+
+iab teh the
+iab retrun return
