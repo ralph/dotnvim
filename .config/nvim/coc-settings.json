@@ -1,0 +1,31 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascriptreact",
+    "json",
+    "ruby",
+    "typescript",
+    "typescript.tsx",
+    "typescriptreact"
+  ],
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "json",
+    "typescript",
+    "typescript.tsx",
+    "typescriptreact",
+    "vue"
+  ],
+  "eslint.autoFixOnSave": true,
+  "diagnostic.virtualText": true,
+  "prettier.eslintIntegration": true,
+  "solargraph.autoformat": true,
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
+  "solargraph.hover": true,
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.format.defaultFormatter.js": "prettier-eslint",
+  "vetur.format.defaultFormatter.ts": "prettier-tslint",
+  "vetur.useWorkspaceDependencies": true
+}

@@ -5,11 +5,7 @@ else
 end
 
 if has('nvim')
-    " Plug 'autozimu/LanguageClient-neovim', {
-    " \ 'branch': 'next',
-    " \ 'do': 'bash install.sh',
-    " \ }
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'kassio/neoterm'
 else
   Plug 'Shougo/neocomplete.vim'
@@ -31,10 +27,12 @@ Plug 'ap/vim-css-color'
 Plug 'c-brenn/phoenix.vim'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'neomake/neomake' | Plug 'benjie/neomake-local-eslint.vim'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jparise/vim-graphql'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'kana/vim-textobj-user'
@@ -66,7 +64,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' | Plug 'edkolev/tmuxline.vim'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 Plug 'ryanoasis/vim-devicons'
 
@@ -575,3 +573,18 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " end coc.nvim
+
+
+"Custom COC
+" let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver']
+nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
+
+" FZF
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+nnoremap <C-p> :FZF<CR>
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit'
+  \}

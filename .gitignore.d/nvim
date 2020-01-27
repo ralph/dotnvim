@@ -3,5 +3,6 @@
 !/.config/nvim
 !/.config/nvim/.gitignore
 !/.config/nvim/init.vim
+!/.config/nvim/coc-settings.json
 !/.gitignore.d
 !/.gitignore.d/nvim
