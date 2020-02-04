@@ -4,48 +4,22 @@ else
   call plug#begin('~/.vim/plugged')
 end
 
-if has('nvim')
-  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'kassio/neoterm'
-else
-  Plug 'Shougo/neocomplete.vim'
-  Plug 'Shougo/vimshell'
-  Plug 'jgdavey/vim-turbux'
-  Plug 'tpope/vim-dispatch'
-end
-
 Plug 'sheerun/vim-polyglot' | Plug 'godlygeek/tabular' | Plug 'mhartington/nvim-typescript', { 'do': 'sh install.sh' }
 Plug 'Shougo/denite.nvim'
-" if system('uname') =~ 'Darwin'
-"   Plug 'Shougo/vimproc.vim', { 'do': 'make -f make_mac.mak' }
-" else
-"  Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-" endif
 Plug 'airblade/vim-gitgutter'
-Plug 'amadeus/vim-mjml'
 Plug 'ap/vim-css-color'
-Plug 'c-brenn/phoenix.vim'
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'neomake/neomake' | Plug 'benjie/neomake-local-eslint.vim'
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jparise/vim-graphql'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'lifepillar/vim-solarized8'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'majutsushi/tagbar'
 Plug 'mmorearty/elixir-ctags'
 Plug 'mtth/scratch.vim'
 Plug 'mzlogin/vim-markdown-toc'
-Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'posva/vim-vue'
-" Plug 'sbdchd/neoformat'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' } | Plug 'neoclide/coc-denite'
 Plug 'rlue/vim-fold-rspec'
 Plug 'scrooloose/nerdtree' | Plug 'EvanDotPro/nerdtree-chmod' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'slashmili/alchemist.vim'
@@ -64,7 +38,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes' | Plug 'edkolev/tmuxline.vim'
-" Plug 'w0rp/ale'
 
 Plug 'ryanoasis/vim-devicons'
 
@@ -123,7 +96,8 @@ set ruler                         " Show cursor position.
 set scrolloff=3                   " Show 3 lines of context around the cursor.
 
 "" NERDTree
-let NERDTreeHijackNetrw=1
+let NERDTreeHijackNetrw = 1
+let NERDTreeMinimalUI = 1
 map <c-n> :NERDTreeFind<cr>
 " let NERDTreeShowHidden=1
 
@@ -185,7 +159,7 @@ map <leader>jt <Esc>:%!json_xs -f json -t json-pretty<CR> " sudo cpan JSON::XS
 
 
 " ctrlp
-map <c-b> :CtrlPBuffer<cr>
+" map <c-b> :CtrlPBuffer<cr>
 
 
 " dispatch
@@ -583,6 +557,7 @@ nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
 " FZF
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 nnoremap <C-p> :FZF<CR>
+nnoremap <C-b> :Buffers<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
