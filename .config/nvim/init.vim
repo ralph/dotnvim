@@ -5,7 +5,9 @@ else
 end
 
 Plug 'sheerun/vim-polyglot' | Plug 'godlygeek/tabular' | Plug 'mhartington/nvim-typescript', { 'do': 'sh install.sh' }
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'Shougo/denite.nvim'
+Plug 'Shougo/unite.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-css-color'
 Plug 'christoomey/vim-tmux-navigator'
